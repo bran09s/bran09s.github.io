@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumple Angie</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            flex-direction: column;
+            position: relative;
+        }
+        #container, #loadingScreen, #flarkSticker, #comment1, #comment2 {
+            display: none;
+        }
+        #container {
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+        }
+        #message {
+            font-size: 2em;
+            font-family: 'Pacifico', cursive;
+            color: black;
+            margin: 20px 0;
+            position: relative;
+            z-index: 10;
+        }
+        .sticker {
+            width: 80px;
+            height: auto;
+            position: absolute;
+            z-index: 5;
+        }
+        #letterSticker {
+            width: 80px;
+            margin-bottom: 5px;
+        }
+        #flarkSticker {
+            width: 90px;
+            margin: 5px;
+        }
+        #loadingScreen {
+            width: 200px;
+            margin: 5px;
+        }
+        #loadingText {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .top-left { top: 80px; left: 13%; }
+        .top-right { top: 80px; right: 13%; }
+        .bottom-left { bottom: 50px; left: 23%; }
+        .bottom-right { bottom: 50px; right: 23%; }
+        button {
+            padding: 12px;
+            margin: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 10px;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from { transform: translateY(-100vh) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+        /* Para el mensaje de "Feliz Cumpleaños Angie" */
+        #message {
+            font-size: 2em;
+            font-family: 'Pacifico', cursive; /* Fuente cursiva para el mensaje */
+            color: black;
+            margin: 20px 0;
+            position: relative;
+            z-index: 10;
+        }
+        /* Para los comentarios */
+        #comment1, #comment2, #comment3 {
+            font-family: 'Pacifico', cursive; /* Nueva fuente cursiva para los comentarios */
+            font-size: 1.5em;
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Primera parte -->
+    <img id="letterSticker" src="CartaNegra.png" alt="Carta">
+    <b id="messageText">Tienes un Mensaje</b>
+    <b id="emojiText">:3</b>
+    <button id="startButton">Presionar</button>
+    <b id="loadingText">Con cariño para que se ría un rato.</b>
+
+    <!-- Segunda parte -->
+    <img id="flarkSticker" src="FLork.png" alt="Flark">
+    <img id="loadingScreen" src="loading.gif" autoplay muted>
+
+    <!-- Tercera parte -->
+    <div id="container">
+        <img class="sticker top-left" src="perroRamo.webp">
+        <img class="sticker top-right" src="perroloco.webp">
+        
+        <!-- Imagen de mariachis que aparece después de 5 segundos -->
+        <img id="mariachiImage" src="mariachis.png" alt="Mariachi" style="display: none; width: 200px; margin-top: 20px; display: block; margin-left: auto; margin-right: auto;">
+        
+        <div id="message">¡Feliz Cumpleaños Angie!</div>
+        <img class="sticker bottom-left" src="Ramo1.webp">
+        <img class="sticker bottom-right" src="Ramobien.webp">
+
+        <!-- Cuarta parte: Comentarios ocultos al inicio -->
+        <div id="comment1" class="comment">Felices 20</div>
+        <div id="comment2" class="comment">Espero hayas tenido un bonito día</div>
+        <div id="comment3" class="comment">Que Dios te bendiga mucho</div>
+    </div>
+
+    <audio id="music" loop>
+        <source src="Cepillin.mp4" type="audio/mp3">
+    </audio>
+
+    <script>
+        document.getElementById("startButton").addEventListener("click", function() {
+            this.style.display = "none";
+            
+            document.getElementById("letterSticker").style.display = "none";
+            document.getElementById("messageText").style.display = "none";
+            document.getElementById("emojiText").style.display = "none";
+            document.getElementById("loadingText").style.display = "none"; // Ocultar el mensaje
+
+            // Segunda parte: Aparece Flork y la pantalla de carga
+            setTimeout(() => {
+                document.getElementById("flarkSticker").style.display = "block";
+                document.getElementById("loadingScreen").style.display = "block";
+            },0);
+
+            // Tercera parte: Muestra el mensaje de cumpleaños
+            setTimeout(() => {
+                document.getElementById("flarkSticker").style.display = "none";
+                document.getElementById("loadingScreen").style.display = "none";
+                document.getElementById("container").style.display = "block";
+                document.getElementById("loadingText").style.display = "none"; // Ocultar el mensaje
+                
+                setTimeout(() => {
+                    document.getElementById("container").style.opacity = "1";
+                    createConfetti();
+                }, 500);
+
+                let music = document.getElementById("music");
+                music.volume = 0.2;
+                music.play();
+                
+                // Cuarta parte: Muestra los comentarios después de 2 y 4 segundos
+                setTimeout(() => {
+                    document.getElementById("comment1").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("comment1").style.opacity = "1";
+                    }, 200);
+                }, 2000);
+
+                setTimeout(() => {
+                    document.getElementById("comment2").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("comment2").style.opacity = "1";
+                    }, 200);
+                }, 4000);
+
+                setTimeout(() => {
+                    document.getElementById("comment3").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("comment3").style.opacity = "1";
+                    }, 200);
+                }, 6000);
+
+                // Mostrar la imagen de mariachis después de 5 segundos
+                setTimeout(() => {
+                    document.getElementById("mariachiImage").style.display = "block";
+                }, 5000);
+
+            }, 3500);
+        });
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                let confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * window.innerWidth + "px";
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 30000);
+            }
+        }
+    </script>
+</body>
+</html>
