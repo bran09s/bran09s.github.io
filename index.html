@@ -54,14 +54,14 @@
             margin: 5px;
         }
         #loadingText {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Trebuchet MS', sans-serif;
             font-size: 18px;
             margin-top: 10px;
         }
-        .top-left { top: 120px; left: 13%; }
-        .top-right { top: 120px; right: 13%; }
-        .bottom-left { bottom: 125px; left: 23%; }
-        .bottom-right { bottom: 125px; right: 23%; }
+        .top-left { top: 130px; left: 13%; }
+        .top-right { top: 130px; right: 13%; }
+        .bottom-left { bottom: 140px; left: 23%; }
+        .bottom-right { bottom: 140px; right: 23%; }
         button {
             padding: 12px;
             margin: 25px;
@@ -105,27 +105,27 @@
 </head>
 <body>
     <!-- Primera parte -->
-    <img id="letterSticker" src="CartaNegra.png" alt="Carta">
+    <img id="letterSticker" src="CartaNegra.png" alt="Carta" style="pointer-events: none; user-select: none;">
     <b id="messageText">Tienes un Mensaje</b>
     <b id="emojiText">:3</b>
     <button id="startButton">Presionar</button>
     <b id="loadingText">Con cariño para que se ría un rato.</b>
 
     <!-- Segunda parte -->
-    <img id="flarkSticker" src="FLork.png" alt="Flark">
-    <img id="loadingScreen" src="loading.gif" autoplay muted>
+    <img id="flarkSticker" src="FLork.png" alt="Flark" style="pointer-events: none; user-select: none;">
+    <img id="loadingScreen" src="loading.gif" autoplay muted style="pointer-events: none; user-select: none;">
 
     <!-- Tercera parte -->
     <div id="container">
-        <img class="sticker top-left" src="perroRamo.webp">
-        <img class="sticker top-right" src="perroloco.webp">
+        <img class="sticker top-left" src="perroRamo.webp" style="pointer-events: none; user-select: none;">
+        <img class="sticker top-right" src="perroloco.webp" style="pointer-events: none; user-select: none;">
         
         <!-- Imagen de mariachis que aparece después de 5 segundos -->
-        <img id="mariachiImage" src="mariachis.png" alt="Mariachi" style="display: none; width: 200px; margin-top: 20px; display: block; margin-left: auto; margin-right: auto;">
+        <img id="mariachiImage" src="mariachis.png" alt="Mariachi" style="display: none; width: 200px; margin-top: 20px; display: block; margin-left: auto; margin-right: auto;" style="pointer-events: none; user-select: none;">
         
         <div id="message">¡Feliz Cumpleaños Angie!</div>
-        <img class="sticker bottom-left" src="Ramo1.webp">
-        <img class="sticker bottom-right" src="Ramobien.webp">
+        <img class="sticker bottom-left" src="Ramo1.webp" style="pointer-events: none; user-select: none;">
+        <img class="sticker bottom-right" src="Ramobien.webp" style="pointer-events: none; user-select: none;">
 
         <!-- Cuarta parte: Comentarios ocultos al inicio -->
         <div id="comment1" class="comment">Felices 20</div>
